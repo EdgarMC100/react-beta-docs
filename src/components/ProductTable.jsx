@@ -5,7 +5,7 @@ import {
   orderProductsByCategory,
 } from "../utils/products";
 
-export default function ProductTable({ products }) {
+export default function ProductTable({ products, showOnlyStockProducts }) {
   const categories = findProductCategories(products);
   const orderedCategory = orderProductsByCategory(products, categories);
   const rows = [];
@@ -20,15 +20,29 @@ export default function ProductTable({ products }) {
         />
       );
     }
-    rows.push(
-      <ProductRow product={product} key={`${product.name}-${index}`} />
-    );
+    if (showOnlyStockProducts) {
+      if (product.stocked) {
+        rows.push(
+          <ProductRow product={product} key={`${product.name}-${index}`} />
+        );
+      }
+    } else {
+      rows.push(
+        <ProductRow product={product} key={`${product.name}-${index}`} />
+      );
+    }
     lastCategory = product.category;
   });
 
   return (
     <>
-      <table style={{ width: "100%" }}>
+      <table
+        style={{
+          width: "100%",
+          borderCollapse: "separate",
+          borderSpacing: "0 1em",
+        }}
+      >
         <thead>
           <tr>
             <th style={{ width: "50%" }}>Name</th>

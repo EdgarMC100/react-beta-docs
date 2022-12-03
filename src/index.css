@@ -34,6 +34,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  font-size: 25px;
 }
 
 h1 {
@@ -70,5 +71,11 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    font-size: 2.5rem;
   }
 }
