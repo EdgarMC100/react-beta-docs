@@ -6,11 +6,11 @@ import {
 } from "../utils/products";
 
 export default function ProductTable({ products, showOnlyStockProducts }) {
+  console.log(products);
   const categories = findProductCategories(products);
   const orderedCategory = orderProductsByCategory(products, categories);
   const rows = [];
   let lastCategory = null;
-
   orderedCategory.forEach((product, index) => {
     if (product.category !== lastCategory) {
       rows.push(

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import FilterableProductTable from "./components/FilterableProductTable";
+import TicTacToe from "./containers/TicTacToe";
 const PRODUCTS = [
   { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
   { category: "Vegetables", price: "$2", stocked: true, name: "Spinach" },
@@ -16,7 +17,8 @@ function App() {
 
   return (
     <div className="App">
-      <FilterableProductTable products={PRODUCTS} />
+      <TicTacToe />
+      {/* <FilterableProductTable products={PRODUCTS} /> */}
     </div>
   );
 }
