@@ -1,5 +1,18 @@
+.gridContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: fit-content;
+  /* gap: 0.5rem; */
+}
+
 .boardRow:after {
   clear: both;
   content: "";
   display: table;
 }
+
+/* @media screen  and (max-width: 800px) {
+  .gridContainer{
+    grid-template-columns: 1fr 1fr;
+  }
+} */

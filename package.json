@@ -16,6 +16,7 @@
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "^2.2.0",
+    "standard": "^17.0.0",
     "vite": "^3.2.3"
   },
   "main": "vite.config.js",
@@ -30,5 +31,8 @@
     "url": "https://github.com/EdgarMC100/react-beta-docs/issues"
   },
   "homepage": "https://github.com/EdgarMC100/react-beta-docs#readme",
-  "description": ""
+  "description": "",
+  "eslintConfig": {
+    "extends": "standard"
+  }
 }
