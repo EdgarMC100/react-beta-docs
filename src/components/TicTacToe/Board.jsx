@@ -1,5 +1,5 @@
-import Square from './Square'
-import styles from './Square.module.css'
+import Square from './Square/Square'
+import styles from './Board.module.css'
 
 export default function Board ({ isGridEnabled }) {
   const elements = 9
@@ -8,7 +8,7 @@ export default function Board ({ isGridEnabled }) {
   const renderBoard = () => {
     if (isGridEnabled) {
       const Squares = squares.map((square, index) => {
-        return <Square className={styles.gridContainer} key={index} value={null} />
+        return <Square className={styles.gridContainer} key={index} />
       })
       return Squares
     }
