@@ -1,14 +1,15 @@
 import Square from './Square/Square'
 import styles from './Board.module.css'
-
+import { useState } from 'react'
 export default function Board ({ isGridEnabled }) {
   const elements = 9
-  console.log(Array(elements).keys())
+  // console.log(Array(elements).keys())
   const squares = Array.from(Array(elements).keys())
+  const [isX, setIsX] = useState(false)
   const renderBoard = () => {
     if (isGridEnabled) {
       const Squares = squares.map((square, index) => {
-        return <Square className={styles.gridContainer} key={index} />
+        return <Square className={styles.gridContainer} key={index} isX={isX} setIsX={setIsX} />
       })
       return Squares
     }
