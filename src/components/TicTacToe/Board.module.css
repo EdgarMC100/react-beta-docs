@@ -11,6 +11,10 @@
   display: table;
 }
 
+.status{
+  margin-bottom: 4rem;
+}
+
 /* @media screen  and (max-width: 800px) {
   .gridContainer{
     grid-template-columns: 1fr 1fr;

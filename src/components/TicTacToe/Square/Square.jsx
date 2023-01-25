@@ -1,45 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { memo } from 'react'
 import './index.css'
-export default function Square ({ isX, setIsX }) {
-  const [value, setValue
-  ] = useState(null)
-  const squaresValues = []
-
-  useEffect(() => {
-    const squares = document.getElementsByClassName('square')
-    for (let i = 0; i < squares.length; i++) {
-      squaresValues.push(squares.item(i).textContent)
-    }
-    console.log(squaresValues)
-  }, [value])
-
-  const clickHandler = (e) => {
-    if (e.target.textContent === '') {
-      // const squares = document.getElementsByClassName('square')
-      // console.log(squares.length)
-      // for (let i = 0; i < squares.length; i++) {
-      //   squaresValues.push(squares.item(i).textContent)
-      // }
-      // const squaresTextContent = squares.map((s) => s.target.textContent)
-      // squaresTextContent.forEach((s) => s)
-      // squares
-      console.log(squaresValues)
-      if (isX) {
-        setIsX(false)
-        setValue('O')
-        return
-      }
-      setIsX(true)
-      setValue('X')
-      console.log(squaresValues)
-      // Comparing las value used in a square
-    }
-  }
+function Square ({ value, onSquareClick, disabled }) {
   return (
-    <>
-      <button className='square' onClick={clickHandler}>
-        {value}
-      </button>
-    </>
+    <button className='square' onClick={onSquareClick} disabled={disabled}>
+      {value}
+    </button>
   )
 }
+
+// function customComparator (prevProps, nextProps) {
+//   if (prevProps.value === nextProps.value) {
+//     return true
+//   }
+//   return false
+// }
+
+export default memo(Square)
