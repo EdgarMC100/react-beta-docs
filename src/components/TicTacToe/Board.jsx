@@ -1,7 +1,7 @@
 import Square from './Square/Square'
 import styles from './Board.module.css'
 import { calculateWinner } from '../../utils'
-export default function Board ({ squares, lastChar, onPlay }) {
+export default function Board ({ xIsNext, squares, lastChar, onPlay }) {
   // Another implementation to check if some square is already been changed before
   let disabledButtons = false
 
@@ -10,11 +10,13 @@ export default function Board ({ squares, lastChar, onPlay }) {
       return undefined
     }
     const nextSquares = squares.slice()
-    const nextChar = lastChar.toLowerCase() === 'x' ? 'o' : 'x'
-    // setLastChar(nextChar)
-    nextSquares[id] = nextChar
-    onPlay(nextSquares, nextChar)
-    // setSquares(squares)
+    if (xIsNext) {
+      nextSquares[id] = 'x'
+    } else {
+      nextSquares[id] = 'o'
+    }
+    // nextSquares[id] = lastChar[lastChar.length - 1] === 'x' ? 'o' : 'x'
+    onPlay(nextSquares)
   }
 
   const renderBoard = () => {
@@ -30,7 +32,7 @@ export default function Board ({ squares, lastChar, onPlay }) {
     disabledButtons = true
     status = `Winner: ${winner}`
   } else {
-    status = `Next player: ${lastChar === 'x' ? 'o' : 'x'}`
+    status = `Next player: ${lastChar[lastChar.length - 1] === 'x' ? 'o' : 'x'}`
   }
 
   return (
