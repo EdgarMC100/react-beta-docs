@@ -4,11 +4,10 @@ import Board from '../components/TicTacToe/Board'
 export default function TicTacToe () {
   const elements = 9
   const [lastChar, setLastChar] = useState('')
-  const [squares, setSquares] = useState(Array(elements).fill(null))
   const [history, setHistory] = useState([Array(elements).fill(null)])
   const currentSquares = history[history.length - 1]
   const resetBoard = () => {
-    setSquares(Array(elements).fill(null))
+    setHistory([Array(elements).fill(null)])
     setLastChar('')
   }
 
@@ -19,6 +18,7 @@ export default function TicTacToe () {
     setLastChar(nextChar)
     // TODO
   }
+  console.log(history)
   return (
     <div className='game'>
       <div className='game-board'>

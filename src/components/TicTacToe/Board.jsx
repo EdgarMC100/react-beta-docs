@@ -9,10 +9,11 @@ export default function Board ({ squares, lastChar, onPlay }) {
     if (squares[id] || calculateWinner(squares)) {
       return undefined
     }
+    const nextSquares = squares.slice()
     const nextChar = lastChar.toLowerCase() === 'x' ? 'o' : 'x'
     // setLastChar(nextChar)
-    squares[id] = nextChar
-    onPlay(squares, nextChar)
+    nextSquares[id] = nextChar
+    onPlay(nextSquares, nextChar)
     // setSquares(squares)
   }
 
