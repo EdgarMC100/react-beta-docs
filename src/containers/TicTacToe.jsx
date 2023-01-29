@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Board from '../components/TicTacToe/Board'
+import Board from '../components/Board'
 
 export default function TicTacToe () {
   const elements = 9

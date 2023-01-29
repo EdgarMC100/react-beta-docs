@@ -21,7 +21,15 @@ export default function Board ({ xIsNext, squares, lastChar, onPlay }) {
 
   const renderBoard = () => {
     const Squares = squares.map((square, index) => {
-      return <Square className={styles.gridContainer} key={index} value={squares[index]} onSquareClick={() => handleClick(index)} disabled={disabledButtons} />
+      return (
+        <Square
+          className={styles.gridContainer}
+          key={index}
+          value={squares[index]}
+          onSquareClick={() => handleClick(index)}
+          disabled={disabledButtons}
+        />
+      )
     })
     return Squares
   }
@@ -32,17 +40,15 @@ export default function Board ({ xIsNext, squares, lastChar, onPlay }) {
     disabledButtons = true
     status = `Winner: ${winner}`
   } else {
-    status = `Next player: ${lastChar[lastChar.length - 1] === 'x' ? 'o' : 'x'}`
+    status = `Next player: ${
+      lastChar[lastChar.length - 1] === 'x' ? 'o' : 'x'
+    }`
   }
 
   return (
     <div>
       {lastChar ? <div className={styles.status}>{status}</div> : null}
-      <div className={styles.gridContainer}>
-        {
-        renderBoard()
-      }
-      </div>
+      <div className={styles.gridContainer}>{renderBoard()}</div>
     </div>
   )
 }
