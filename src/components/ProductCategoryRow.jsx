@@ -5,19 +5,20 @@
 //     </tr>
 //   );
 // }
-import React from "react";
+import React from 'react'
 class ProductCategoryRow extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
   }
-  category = this.props.category;
-  render() {
+
+  category = this.props.category
+  render () {
     return (
       <tr>
-        <th colSpan={"2"}>{this.category}</th>
+        <th colSpan='2'>{this.category}</th>
       </tr>
-    );
+    )
   }
 }
 
-export default ProductCategoryRow;
+export default ProductCategoryRow

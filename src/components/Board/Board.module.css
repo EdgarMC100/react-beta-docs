@@ -3,7 +3,6 @@
   grid-template-columns: 1fr 1fr 1fr;
   width: fit-content;
   margin: 0 auto;
-  /* gap: 0.5rem; */
 }
 
 .boardRow:after {
@@ -14,10 +13,6 @@
 
 .status{
   margin-bottom: 4rem;
+  font-weight: 700;
+  font-size: larger;
 }
-
-/* @media screen  and (max-width: 800px) {
-  .gridContainer{
-    grid-template-columns: 1fr 1fr;
-  }
-} */

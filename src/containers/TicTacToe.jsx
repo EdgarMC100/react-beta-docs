@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Board from '../components/Board'
+import styles from './TicTacToe.module.css'
 
 export default function TicTacToe () {
   const elements = 9
@@ -39,20 +40,22 @@ export default function TicTacToe () {
     }
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        {
+        move === currentMove ? <p className={styles.textCurrentMove}>{`You are at move # ${move}`}</p> : <button onClick={() => jumpTo(move)}>{description}</button>
+        }
       </li>
     )
   })
 
   return (
-    <div className='game'>
-      <div className='game-board'>
-        <h4 style={{ textAlign: 'center', marginBottom: '4rem' }}>Tic Tac Toe</h4>
+    <div className={styles.game}>
+      <div className={styles.gameBoard}>
+        <h4 className={styles.gameBoardTitle}>Tic Tac Toe</h4>
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} disabledButtons={disabledButtons} disableButtons={(value) => setDisabledButtons(value)} />
-        <button style={{ border: '1px solid black', marginTop: '2rem', marginBottom: '2rem' }} onClick={() => resetBoard()}>Reset</button>
+        <button className={styles.resetButton} onClick={() => resetBoard()}>Reset</button>
       </div>
-      <div className='game-info'>
-        <ol>{moves}</ol>
+      <div className={styles.gameInfo}>
+        <ul>{moves}</ul>
       </div>
     </div>
   )
