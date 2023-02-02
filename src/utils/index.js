@@ -16,14 +16,4 @@ export function calculateWinner (squares) {
     }
   }
   return null
-  // console.log('enter here')
-  // const res = lines.map((element, index) => {
-  //   const [a, b, c] = element
-  //   if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-  //     return squares[a]
-  //   }
-  //   return undefined
-  // }).find(e => e !== undefined)
-  // console.log(res)
-  // return res
 }

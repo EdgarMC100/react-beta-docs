@@ -3,32 +3,31 @@ import Board from '../components/Board'
 
 export default function TicTacToe () {
   const elements = 9
-  const [lastChar, setLastChar] = useState([])
   const [history, setHistory] = useState([Array(elements).fill(null)])
   const [currentMove, setCurrentMove] = useState(0)
+  // Squares rendered when the component is rendered for the first time and when the component is re-rendered.
   const currentSquares = history[currentMove]
   const xIsNext = currentMove % 2 === 0
+  const [disabledButtons, setDisabledButtons] = useState(false)
 
   const resetBoard = () => {
     setHistory([Array(elements).fill(null)])
-    setLastChar('')
+    setCurrentMove(0)
+    setDisabledButtons(false)
   }
 
   function handlePlay (nextSquares) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares]
     setHistory((prevSquares) => {
+      console.log(prevSquares)
       return nextHistory
     })
     setCurrentMove(nextHistory.length - 1)
-    // const nextChar = lastChar[lastChar.length - 1] === 'x' ? 'o' : 'x'
-    // console.log(lastChar, 'CHARS', nextChar)
-    // setLastChar([...lastChar, nextChar])
   }
+
   function jumpTo (nextMove) {
+    setDisabledButtons(false)
     setCurrentMove(nextMove)
-    // setXIsNext(nextMove % 2 === 0)
-    // const nextChar = lastChar[nextMove] === 'x' ? 'o' : 'x'
-    // setLastChar(nextChar)
   }
 
   const moves = history.map((squares, move) => {
@@ -44,13 +43,13 @@ export default function TicTacToe () {
       </li>
     )
   })
-  console.log(history)
+
   return (
     <div className='game'>
       <div className='game-board'>
         <h4 style={{ textAlign: 'center', marginBottom: '4rem' }}>Tic Tac Toe</h4>
-        <Board xIsNext={xIsNext} lastChar={lastChar} squares={currentSquares} onPlay={handlePlay} />
-        <button style={{ border: '1px solid black', marginTop: '4rem' }} onClick={() => resetBoard()}>Reset</button>
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} disabledButtons={disabledButtons} disableButtons={(value) => setDisabledButtons(value)} />
+        <button style={{ border: '1px solid black', marginTop: '2rem', marginBottom: '2rem' }} onClick={() => resetBoard()}>Reset</button>
       </div>
       <div className='game-info'>
         <ol>{moves}</ol>
