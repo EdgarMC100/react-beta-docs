@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+// eslint-disable-next-line no-unused-vars
 import Board from '../components/Board'
 import styles from './TicTacToe.module.css'
 
@@ -10,6 +11,7 @@ export default function TicTacToe () {
   const currentSquares = history[currentMove]
   const xIsNext = currentMove % 2 === 0
   const [disabledButtons, setDisabledButtons] = useState(false)
+  const [isOrdered, setIsOrdered] = useState(false)
 
   const resetBoard = () => {
     setHistory([Array(elements).fill(null)])
@@ -55,8 +57,9 @@ export default function TicTacToe () {
         <button className={styles.resetButton} onClick={() => resetBoard()}>Reset</button>
       </div>
       <div className={styles.gameInfo}>
-        <ul>{moves}</ul>
+        <ul>{isOrdered ? moves.reverse() : moves}</ul>
       </div>
+      <button className={styles.orderButton} onClick={() => setIsOrdered(!isOrdered)}>Order</button>
     </div>
   )
 }
