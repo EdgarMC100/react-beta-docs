@@ -1,4 +1,4 @@
-export default function SearchBar ({ handleCheckBox }) {
+export default function SearchBar ({ handleCheckBox, handleFilterText, inStockOnly, filterText }) {
   return (
     <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <input
@@ -9,7 +9,9 @@ export default function SearchBar ({ handleCheckBox }) {
           border: 'none'
         }}
         type='text'
+        value={filterText}
         placeholder='Search...'
+        onChange={(event) => handleFilterText(event.target.value)}
       />
       <label htmlFor=''>
         <input type='checkbox' onChange={(event) => handleCheckBox(event)} />{' '}

@@ -1,0 +1,9 @@
+.sidebarTop{
+  border-bottom: 1px  solid var(--gray);
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: grid;
+  place-items: center;
+  gap: 20px;
+}

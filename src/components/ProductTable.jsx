@@ -5,13 +5,22 @@ import {
   orderProductsByCategory
 } from '../utils/products'
 
-export default function ProductTable ({ products, showOnlyStockProducts }) {
+export default function ProductTable ({ products, inStockOnly, filterText }) {
   console.log(products)
   const categories = findProductCategories(products)
   const orderedCategory = orderProductsByCategory(products, categories)
   const rows = []
   let lastCategory = null
   orderedCategory.forEach((product, index) => {
+    if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+      return
+    }
+
+    // This conditional filter products that are in stock only
+    if (inStockOnly && !product.stocked) {
+      return
+    }
+
     if (product.category !== lastCategory) {
       rows.push(
         <ProductCategoryRow
@@ -20,17 +29,20 @@ export default function ProductTable ({ products, showOnlyStockProducts }) {
         />
       )
     }
-    if (showOnlyStockProducts) {
-      if (product.stocked) {
-        rows.push(
-          <ProductRow product={product} key={`${product.name}-${index}`} />
-        )
-      }
-    } else {
-      rows.push(
-        <ProductRow product={product} key={`${product.name}-${index}`} />
-      )
-    }
+    rows.push(
+      <ProductRow product={product} key={`${product.name}-${index}`} />
+    )
+    // if (showOnlyStockProducts) {
+    //   if (product.stocked) {
+    //     rows.push(
+    //       <ProductRow product={product} key={`${product.name}-${index}`} />
+    //     )
+    //   }
+    // } else {
+    //   rows.push(
+    //     <ProductRow product={product} key={`${product.name}-${index}`} />
+    //   )
+    // }
     lastCategory = product.category
   })
 
