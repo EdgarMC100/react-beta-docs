@@ -1,4 +1,13 @@
 .sidebar{
   border: 1px solid var(--gray);
   background-color: #f7f7f7;
+  display: none;
+}
+
+
+
+@media screen and (min-width: 800px) {
+  .sidebar{
+    display: block;
+  }
 }
